@@ -1,17 +1,11 @@
 import React from "react";
 import TodoListItem from "./TodoListItem";
 
-const TodoList = ({ todos, onRemove, onToggle, showModal }) => {
+const TodoList = ({ todos, dispatch }) => {
   return (
     <div className="TodoList">
       {todos.map((todo) => (
-        <TodoListItem
-          todo={todo}
-          key={todo.id}
-          onRemove={onRemove}
-          onToggle={onToggle}
-          showModal={showModal}
-        />
+        <TodoListItem todo={todo} key={todo.id} dispatch={dispatch} />
       ))}
     </div>
   );

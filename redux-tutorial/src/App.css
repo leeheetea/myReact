@@ -1,0 +1,18 @@
+.container,
+.container div > div {
+  border: 5px solid black;
+  margin: 10px;
+  padding: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 두 개의 컬럼이 동일한 크기를 갖도록 설정 */
+  gap: 10px; /* 컬럼 사이의 간격 설정 */
+}
+
+button {
+  margin-top: 20px;
+  padding: 5px 15px;
+  cursor: pointer;
+}

@@ -7,19 +7,37 @@ import {
 import "./TodoListItem.css";
 import cn from "classnames";
 
-const TodoListItem = ({ todo, onRemove, onToggle, showModal }) => {
+const TodoListItem = ({ todo, dispatch }) => {
   const { id, text, checked } = todo;
+
+  const onDelete = () => {
+    dispatch({
+      type: "DELETE",
+      todo: {
+        id: id,
+      },
+    });
+  };
+
+  const onToggle = () => {
+    dispatch({
+      type: "TOGGLE",
+      todo: {
+        id: id,
+        text: text,
+        checked: checked,
+      },
+    });
+  };
   return (
     <div className="TodoListItem">
       <div className={cn("checkbox", { checked })}>
-        <div onClick={() => onToggle(id)}>
+        <div onClick={onToggle}>
           {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
         </div>
-        <div className="text" onClick={showModal}>
-          {text}
-        </div>
+        <div className="text">{text}</div>
       </div>
-      <div className="remove" onClick={() => onRemove(id)}>
+      <div className="remove" onClick={onDelete}>
         <MdRemoveCircleOutline />
       </div>
     </div>

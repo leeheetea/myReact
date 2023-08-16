@@ -2,22 +2,25 @@ import React, { useCallback, useState } from "react";
 import { MdAdd } from "react-icons/md";
 import "./TodoInsert.css";
 
-const TodoInsert = ({ onInsert }) => {
+const TodoInsert = ({ dispatch, nextId }) => {
   const [value, setValue] = useState("");
 
   const onChange = useCallback((e) => {
     setValue(e.target.value);
   }, []);
 
-  const onSubmit = useCallback(
-    (e) => {
-      console.log("넘어오니?");
-      onInsert(value);
-      setValue("");
-      e.preventDefault();
-    },
-    [onInsert, value]
-  );
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: "INSERT",
+      todo: {
+        id: nextId.current++,
+        text: value,
+        checked: false,
+      },
+    });
+    setValue("");
+  };
 
   return (
     <form className="TodoInsert" onSubmit={onSubmit}>
