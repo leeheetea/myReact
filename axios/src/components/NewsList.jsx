@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import Newsitem from "../components/Newsitem";
 import axios from "axios";
 import usePromise from "../lib/usePromise";

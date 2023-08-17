@@ -16,6 +16,8 @@ form {
 }
 
 .box {
+  width: 90%;
+  height: 82%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,6 +27,8 @@ form {
   padding: 10px 5px;
   border-radius: 10px;
   border-bottom: 3px solid gray;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .booktitle {
@@ -35,8 +39,12 @@ form {
   -webkit-box-orient: vertical;
 }
 
+.pageButton > span {
+  margin: 0 10px;
+}
+
 button {
-  background-color: rgb(88, 61, 188);
+  background-color: rgb(30, 31, 112);
   color: white;
   border: none;
   padding: 5px;
