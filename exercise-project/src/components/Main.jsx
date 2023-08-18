@@ -3,9 +3,13 @@ import Product from "./Product";
 import itemData from "../itemData";
 import { Button } from "react-bootstrap";
 import "../css/main.css";
+import Product2 from "./Product2";
+import nike from "../nike";
+import axios from "axios";
 
 const Main = () => {
   const [productData, setItemData] = useState(itemData);
+  const [nikeData, setnikeData] = useState(nike);
 
   const Title = () => {
     const css = {
@@ -56,6 +60,30 @@ const Main = () => {
     setItemData(sortedData);
   };
 
+  const [count, setCount] = useState(1);
+  const onAxios = () => {
+    setCount(count + 1);
+    if (count === 1) {
+      axios
+        .get(
+          "https://raw.githubusercontent.com/leeheetea/myReact/main/reactRepository/nike2.json"
+        )
+        .then((result) => {
+          const resultNike = [...nikeData, ...result.data];
+          setnikeData(resultNike);
+        });
+    } else if (count === 2) {
+      axios(
+        "https://raw.githubusercontent.com/leeheetea/myReact/main/reactRepository/nike3.json"
+      ).then((result) => {
+        const resultNike = [...nikeData, ...result.data];
+        setnikeData(resultNike);
+      });
+    } else {
+      alert("상품 없어요");
+    }
+  };
+
   return (
     <div>
       <div className="slider"></div>
@@ -83,7 +111,18 @@ const Main = () => {
           })}
         </div>
         <Title2 />
-        <Button variant="outline-primary">3개 더 보기</Button>
+        <Button variant="outline-success" onClick={onAxios}>
+          +3개 더 보기
+        </Button>
+        <div className="container mt-5">
+          <div className="row">
+            {nikeData.map((p, index) => {
+              return (
+                <Product2 key={nikeData[index].id} data={nikeData[index]} />
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );

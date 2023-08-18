@@ -6,19 +6,6 @@ const Product = (props) => {
   const navigate = useNavigate();
   const { title, imgUrl, price, id } = props.data;
 
-  const Title = () => {
-    const csst1 = {
-      marginTop: "70px",
-      textAlign: "center",
-    };
-    return (
-      <>
-        <h3 style={csst1}>MD's Pick</h3>
-        <p style={{ textAlign: "center" }}>시선을 사로잡는 스타일</p>
-      </>
-    );
-  };
-
   return (
     <div className="col-md-4">
       <Nav.Link className="c1" onClick={() => navigate("/detail/" + id)}>
