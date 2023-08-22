@@ -3,8 +3,8 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 const user = createSlice({
   name: "user",
   initialState: {
-    name: "",
-    age: 0,
+    name: "lee",
+    age: 20,
   },
   reducers: {
     changeName(state) {
@@ -22,19 +22,19 @@ const cart = createSlice({
   initialState: [
     {
       id: 0,
-      name: "White and Black",
+      title: "White and Black",
       imgUrl: "img/shoes1.jpg",
       count: 2,
     },
     {
       id: 1,
-      name: "Red Knit",
+      title: "Red Knit",
       imgUrl: "img/shoes2.jpg",
       count: 1,
     },
     {
       id: 2,
-      name: "Grey Yordan",
+      title: "Grey Yordan",
       imgUrl: "img/shoes3.jpg",
       count: 2,
     },
@@ -44,7 +44,6 @@ const cart = createSlice({
       const number = state.findIndex((sta) => {
         return sta.id === action.payload;
       });
-      console.log(number);
       state[number].count++;
     },
     decreaseCount(state, action) {
@@ -65,7 +64,7 @@ const cart = createSlice({
     },
     addItem(state, action) {
       const number = state.findIndex((sta) => {
-        return sta.id === action.payload;
+        return sta.id === action.payload.id;
       });
       if (number !== -1) {
         state[number].count++;
@@ -81,7 +80,7 @@ const cart = createSlice({
 
 export let { changeName, increaseAge } = user.reducer;
 
-export let { increaseCount, decreaseCount, addItem, deleItem, sortName } =
+export let { increaseCount, decreaseCount, addItem, removeItem, sortByName } =
   cart.actions;
 
 export default configureStore({

@@ -25,3 +25,12 @@
 .c1:hover {
   color: tomato;
 }
+
+.start {
+  transform: scale(0);
+}
+
+.end {
+  transform: scale(1);
+  transition: all 0.5s;
+}

@@ -1,0 +1,27 @@
+@media (max-width: 768px) {
+  .search-container {
+    display: flex;
+  }
+  .searchbar-container {
+    position: relative;
+    width: 300px;
+  }
+  .searchbar {
+    text-align: right;
+    width: 100%;
+  }
+  .searchbar > input {
+    width: 80%;
+    padding-right: 30px;
+  }
+  .searchbar > svg {
+    position: absolute; /* 이 줄을 수정합니다. */
+    top: 20px;
+    right: 10px;
+    transform: translateY(-50%); /* 상위 요소의 중앙에 위치시키기 위해 추가 */
+    pointer-events: none; /* 아이콘 위에서도 입력이 가능하도록 추가 */
+  }
+  .search-container-menu {
+    display: none;
+  }
+}
