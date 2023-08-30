@@ -11,19 +11,16 @@ const PostList = () => {
 
   const callAPI = useCallback(async () => {
     setLoading(true);
-    try {
-      const result = await axios(
-        `https://sample.bmaster.kro.kr/contacts?pageno=${page}`
-      );
-      setPosts(result.data.contacts);
-      console.log(result);
 
-      setLast(Math.ceil(result.data.totalcount / 5));
-    } catch (error) {
+    const result = await axios(
+      `https://sample.bmaster.kro.kr/contacts?pageno=${page}`
+    ).catch((error) => {
       console.error("Error fetching data:", error);
-    } finally {
-      setLoading(false);
-    }
+    });
+    setPosts(result.data.contacts);
+    setLast(Math.ceil(result.data.totalcount / 5));
+
+    setLoading(false);
   }, [page]);
 
   useEffect(() => {

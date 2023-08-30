@@ -58,6 +58,13 @@ const PostRead = () => {
     setSelectedFile(file);
   };
 
+  const onDelete = async () => {
+    if (window.confirm(`${name}의 연락처를 삭제할까요?`)) {
+      await axios.delete(`https://sample.bmaster.kro.kr/contacts/${no}`);
+      navigator("/contacts");
+    }
+  };
+
   return (
     <>
       <Row className="my-5">
@@ -67,6 +74,9 @@ const PostRead = () => {
             <Link to={`/contacts/update/${no}`}>
               <Button className="btn-sm">수정</Button>
             </Link>
+            <Button onClick={onDelete} variant="danger btn-sm">
+              삭제
+            </Button>
           </div>
           <Card>
             <Card.Header>
