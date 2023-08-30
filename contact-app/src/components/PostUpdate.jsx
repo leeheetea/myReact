@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -31,14 +31,16 @@ const PostUpdate = () => {
     }
   };
 
-  const callAPI = async () => {
+  const callAPI = useCallback(async () => {
     setLoading(true);
     const result = await axios(
       `https://sample.bmaster.kro.kr/contacts/${no}`
     ).catch((e) => alert("fetch error", e));
     setForm(result.data);
     setLoading(false);
-  };
+  }, [no]);
+
+  useEffect(() => callAPI, [callAPI]);
 
   if (loading) {
     return <h1 className="text-center my-5">Loading...</h1>;

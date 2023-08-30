@@ -65,7 +65,9 @@ const PostWrite = () => {
             >
               등록
             </Button>
-            <Button variant="secondary px-5">취소</Button>
+            <Button onClick={() => navigator(-1)} variant="secondary px-5">
+              취소
+            </Button>
           </div>
         </Col>
       </Row>
