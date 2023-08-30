@@ -1,17 +1,16 @@
 import React from "react";
 import "../css/Header.css";
 import { RiSearchLine } from "react-icons/ri";
-import { BsTicketPerforatedFill } from "react-icons/bs";
+import logo from "../img/logo.png";
 
 const SearchBar = () => {
   return (
     <header>
       <div className="header-container">
         <div className="header-icon-container">
-          <span className="header-ticket-icon">
-            <BsTicketPerforatedFill size="30" />
-          </span>
-          <span className="header-text"> 티켓</span>
+          <div className="header-ticket-icon">
+            <img className="header-logo" src={logo} alt="" />
+          </div>
         </div>
         <div className="searchbar-container">
           <input className="searchbar" type="text" placeholder="검색어 입력" />
